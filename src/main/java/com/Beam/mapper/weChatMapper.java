@@ -1,8 +1,5 @@
 package com.Beam.mapper;
 
-import com.sun.javafx.collections.MappingChange;
-
-import java.util.List;
 import java.util.Map;
 
 public interface weChatMapper {
