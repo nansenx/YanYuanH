@@ -15,21 +15,6 @@ public class weChatController {
     @Resource
     com.Beam.biz.weChatService weChatService;
 
-    @ResponseBody
-    @RequestMapping(value = "findData")
-    public String findData(HttpServletResponse resp, @RequestBody Map<String, Object> par) {
-        resp.setContentType("text/json");
-        resp.setCharacterEncoding("utf-8");
-        String data = (String) par.get("data");
-
-
-        Map<String, Object> paramsMap = new HashMap<>();
-        paramsMap.put("data", data);
-
-        weChatService.findData(paramsMap);
-
-        return null;
-    }
 //    添加用户信息
     @ResponseBody
     @RequestMapping(value = "insertCustomer")

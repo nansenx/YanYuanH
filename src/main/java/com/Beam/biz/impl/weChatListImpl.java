@@ -16,12 +16,6 @@ public class weChatListImpl implements weChatService {
     @Autowired
     private weChatMapper wechatMapper;
 
-
-    @Override
-    public String findData(Map<String, Object> ParamsMap) {
-        String str = wechatMapper.findData(ParamsMap);
-        return str;
-    }
 //    添加用户信息
     @Override
     public Boolean insertCustomer(Map<String, Object> ParamsMap) {
