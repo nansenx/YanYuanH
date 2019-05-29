@@ -816,35 +816,117 @@
       <DefaultForCharset>0</DefaultForCharset>
     </collation>
     <table id="205" parent="7" name="customerinfomation"/>
-    <column id="206" parent="205" name="user_id">
+    <table id="206" parent="7" name="merchantmenu"/>
+    <column id="207" parent="205" name="user_id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="207" parent="205" name="user_name">
+    <column id="208" parent="205" name="user_name">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="208" parent="205" name="user_dormitory">
+    <column id="209" parent="205" name="user_dormitory">
       <Position>3</Position>
       <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="209" parent="205" name="user_phone">
+    <column id="210" parent="205" name="user_phone">
       <Position>4</Position>
       <DataType>varchar(11)|0s</DataType>
+      <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="210" parent="205" name="user_sex">
+    <column id="211" parent="205" name="user_sex">
       <Position>5</Position>
       <DataType>varchar(3)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="211" parent="205" name="PRIMARY">
+    <key id="212" parent="205" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
-      <ColNames>user_id</ColNames>
+      <ColNames>user_id
+user_phone</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="213" parent="206" name="menu_id">
+      <Position>1</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="214" parent="206" name="merchant_name">
+      <Position>2</Position>
+      <Comment>商家名</Comment>
+      <DataType>varchar(255)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="215" parent="206" name="region_1">
+      <Position>3</Position>
+      <Comment>一元区</Comment>
+      <DataType>varchar(255)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="216" parent="206" name="region_2">
+      <Position>4</Position>
+      <Comment>二元区</Comment>
+      <DataType>varchar(255)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="217" parent="206" name="region_3">
+      <Position>5</Position>
+      <Comment>三元区</Comment>
+      <DataType>varchar(255)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="218" parent="206" name="HuangMenJi_region">
+      <Position>6</Position>
+      <Comment>黄焖鸡区</Comment>
+      <DataType>varchar(255)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="219" parent="206" name="BanFan_region">
+      <Position>7</Position>
+      <Comment>拌饭区</Comment>
+      <DataType>varchar(255)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="220" parent="206" name="drinks_region">
+      <Position>8</Position>
+      <Comment>饮料区</Comment>
+      <DataType>varchar(255)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="221" parent="206" name="rice_region">
+      <Position>9</Position>
+      <Comment>米饭区</Comment>
+      <DataType>varchar(255)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="222" parent="206" name="recommend">
+      <Position>10</Position>
+      <Comment>介绍</Comment>
+      <DataType>varchar(255)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="223" parent="206" name="phone">
+      <Position>11</Position>
+      <Comment>电话</Comment>
+      <DataType>varchar(255)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="224" parent="206" name="image">
+      <Position>12</Position>
+      <Comment>商家图片</Comment>
+      <DataType>varchar(255)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <key id="225" parent="206" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>menu_id</ColNames>
       <Primary>1</Primary>
     </key>
   </database-model>

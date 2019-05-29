@@ -8,13 +8,13 @@
 
     <!--添加用户信息-->
     <insert id="insertCustomer" parameterType="java.util.Map">
-        insert into customerinfomation (user_name,user_dormitory,user_phone,user_sex)
+        insert into customerInfomation (user_name,user_dormitory,user_phone,user_sex)
         values (#{userName},#{userRoom},#{userPhone},#{userSex})
     </insert>
 
     <!--查询商家外卖-->
     <select id="findMenu" resultType="java.util.Map">
         select *
-        from DaZuiBuDaiMo
+        from merchantMenu
     </select>
 </mapper>
