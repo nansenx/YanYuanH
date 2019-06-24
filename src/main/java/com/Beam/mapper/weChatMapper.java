@@ -9,4 +9,7 @@ public interface weChatMapper {
 
     //    查询商家外卖
     Map<String, Object> findMenu();
+
+    //添加订单信息
+    boolean insertOrder(Map<String, Object> ParamsMap);
 }

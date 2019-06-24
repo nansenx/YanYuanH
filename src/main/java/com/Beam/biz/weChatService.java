@@ -10,4 +10,8 @@ import java.util.Map;
         //    查询商家外卖
         Map<String, Object> findMenu();
 
-}
+//        添加订单信息
+        Boolean insertOrder(Map<String, Object> ParamsMap);
+
+
+    }
