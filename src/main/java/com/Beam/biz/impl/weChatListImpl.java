@@ -19,8 +19,7 @@ public class weChatListImpl implements weChatService {
 //    添加用户信息
     @Override
     public Boolean insertCustomer(Map<String, Object> ParamsMap) {
-        wechatMapper.insertCustomer(ParamsMap);
-        return true;
+        return wechatMapper.insertCustomer(ParamsMap);
     }
 
 //    查询商家外卖
@@ -33,13 +32,14 @@ public class weChatListImpl implements weChatService {
     @Override
     public Boolean insertOrder(Map<String, Object> ParamsMap) {
         wechatMapper.insertOrder(ParamsMap);
-        return null;
+        return true;
     }
 
 //    查询商家详情页
     @Override
     public List<Map<String,Object>> findMerchant(Map<String, Object> ParamsMap) {
-        return wechatMapper.findMerchant(ParamsMap);
+        List<Map<String,Object>> maps = wechatMapper.findMerchant(ParamsMap);
+        return maps;
     }
 
     /**

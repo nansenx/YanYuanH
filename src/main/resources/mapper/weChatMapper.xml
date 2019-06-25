@@ -21,20 +21,8 @@
     <!--查询商家详细页-->
     <select id="findMerchant" resultType="java.util.Map" parameterType="java.util.Map">
         select *
-        <if test=" merchantId = 1111">
-            from budaimo,merchant
-            where merchant.merchant_id = '1111'
-        </if>
-        <!--<if test=" merchantId = 1112">-->
-            <!--from dapanji,merchant-->
-            <!--where merchant.merchant_id = '1112'-->
-        <!--</if>-->
-        <!--<if test=" merchantId = 1113">-->
-        <!--from budaimo,merchant-->
-        <!--where merchant.merchant_id = '1113'-->
-    <!--</if>-->
-
-
+        from ${dataBase},merchant
+        where merchant.merchant_id = ${merchantId}
     </select>
 
     <!--添加订单信息-->
