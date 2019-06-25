@@ -12,10 +12,29 @@
         values (#{userName},#{userRoom},#{userPhone},#{userSex})
     </insert>
 
-    <!--查询商家外卖-->
+    <!--查询商家-->
     <select id="findMenu" resultType="java.util.Map">
         select *
-        from merchantMenu
+        from merchant
+    </select>
+
+    <!--查询商家详细页-->
+    <select id="findMerchant" resultType="java.util.Map" parameterType="java.util.Map">
+        select *
+        <if test=" merchantId = 1111">
+            from budaimo,merchant
+            where merchant.merchant_id = '1111'
+        </if>
+        <!--<if test=" merchantId = 1112">-->
+            <!--from dapanji,merchant-->
+            <!--where merchant.merchant_id = '1112'-->
+        <!--</if>-->
+        <!--<if test=" merchantId = 1113">-->
+        <!--from budaimo,merchant-->
+        <!--where merchant.merchant_id = '1113'-->
+    <!--</if>-->
+
+
     </select>
 
     <!--添加订单信息-->

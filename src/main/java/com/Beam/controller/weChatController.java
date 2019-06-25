@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -43,13 +44,14 @@ public class weChatController {
         }
         return true;
     }
+
 //    查询商家外卖
     @ResponseBody
     @RequestMapping(value = "findMenu")
-    public Map<String,Object> findMenu(HttpServletResponse resp) {
+    public List<Map<String,Object>> findMenu(HttpServletResponse resp) {
         resp.setContentType("text/json");
         resp.setCharacterEncoding("utf-8");
-        Map<String,Object> map;
+        List<Map<String,Object>> map = null;
         Map<String, Object> hasMap = new HashMap<>();
         try {
             map = weChatService.findMenu();
@@ -58,7 +60,7 @@ public class weChatController {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return  hasMap;
+        return  map;
     }
 
     //    添加订单信息
@@ -95,6 +97,28 @@ public class weChatController {
         }
         return true;
     }
+
+    //    查询商家详情页
+    @ResponseBody
+    @RequestMapping(value = "findMerchant")
+    public List<Map<String,Object>> findMerchant(HttpServletResponse resp, @RequestBody Map<String, Object> par) {
+        resp.setContentType("text/json");
+        resp.setCharacterEncoding("utf-8");
+
+        String merchantId = (String) par.get("merchant_id");
+
+        Map<String, Object> paramsMap = new HashMap<>();
+        paramsMap.put("merchantId", merchantId);
+        List<Map<String, Object>> map = null;
+
+        try {
+            map = weChatService.findMerchant(paramsMap);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return map;
+    }
+
 
 //    获取当前时间
     String nowTime(){

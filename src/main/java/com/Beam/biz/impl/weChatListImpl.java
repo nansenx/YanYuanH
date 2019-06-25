@@ -25,11 +25,8 @@ public class weChatListImpl implements weChatService {
 
 //    查询商家外卖
     @Override
-    public Map<String, Object> findMenu() {
-        Map<String,Object> map = wechatMapper.findMenu();
-        map.put("region_1_images",pulsLink(map,"region_1_images"));
-        map.put("region_2_images",pulsLink(map,"region_2_images"));
-        return map;
+    public List<Map<String,Object>> findMenu() {
+        return wechatMapper.findMenu();
     }
 
 //    添加订单信息
@@ -37,6 +34,12 @@ public class weChatListImpl implements weChatService {
     public Boolean insertOrder(Map<String, Object> ParamsMap) {
         wechatMapper.insertOrder(ParamsMap);
         return null;
+    }
+
+//    查询商家详情页
+    @Override
+    public List<Map<String,Object>> findMerchant(Map<String, Object> ParamsMap) {
+        return wechatMapper.findMerchant(ParamsMap);
     }
 
     /**
