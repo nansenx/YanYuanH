@@ -16,6 +16,9 @@ import java.util.Map;
 //        查询商家详情页
         List<Map<String,Object>> findMerchant(Map<String, Object> ParamsMap);
 
+        //    查询滚动页
+        List<Map<String,Object>> findScrollBar();
+
 
 
     }

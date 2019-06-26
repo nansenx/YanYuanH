@@ -42,4 +42,9 @@ public class weChatListImpl implements weChatService {
         return maps;
     }
 
+    @Override
+    public List<Map<String, Object>> findScrollBar() {
+        return wechatMapper.findScrollBar();
+    }
+
 }

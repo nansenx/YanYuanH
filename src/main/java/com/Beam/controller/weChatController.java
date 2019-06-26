@@ -143,6 +143,24 @@ public class weChatController {
         return map;
     }
 
+    //    查询滚动页
+    @ResponseBody
+    @RequestMapping(value = "findScrollBar")
+    public List<Map<String,Object>> findScrollBar(HttpServletResponse resp) {
+        resp.setContentType("text/json");
+        resp.setCharacterEncoding("utf-8");
+        List<Map<String,Object>> map = null;
+        Map<String, Object> hasMap = new HashMap<>();
+        try {
+            map = weChatService.findScrollBar();
+            hasMap.put("ScrollBar", map);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return map;
+    }
+
 //    获取当前时间
     String nowTime(){
         //设置日期格式

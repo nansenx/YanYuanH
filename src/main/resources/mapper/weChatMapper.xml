@@ -32,4 +32,11 @@
         values (#{orderTime},#{orderMenu},#{userName},#{userPhone},#{userRoom},
         #{userSex},#{remark},#{orderMerchant},#{orderMoney})
     </insert>
+
+    <!--查询商家-->
+    <select id="findScrollBar" resultType="java.util.Map">
+        select *
+        from scollbar
+    </select>
+
 </mapper>

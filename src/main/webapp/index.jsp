@@ -6,7 +6,7 @@
         <br>
         <br>
         <div align="center">
-            <img src="images/Publicity/publicity.png">
+            <img src="images/PublicityImages/publicity1.png">
         </div>
     </body>
 </html>
