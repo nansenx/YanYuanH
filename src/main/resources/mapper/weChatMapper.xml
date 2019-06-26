@@ -27,7 +27,9 @@
 
     <!--添加订单信息-->
     <insert id="insertOrder" parameterType="java.util.Map">
-        insert into "order"(order_time,order_menu,cus_name,cus_phone,cus_dormitory,cus_sex,remark,order_merchant)
-        value (#{orderTime},#{orderMenu},#{userName},#{userPhone},#{userRoom},#{userSex},#{remark},#{orderMerchant})
+        insert into orderinformation (order_time,order_menu,cus_name,cus_phone,cus_dormitory,
+        cus_sex,remark,order_merchant,order_money)
+        values (#{orderTime},#{orderMenu},#{userName},#{userPhone},#{userRoom},
+        #{userSex},#{remark},#{orderMerchant},#{orderMoney})
     </insert>
 </mapper>

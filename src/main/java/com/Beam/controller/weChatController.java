@@ -21,7 +21,7 @@ public class weChatController {
 //    添加用户信息
     @ResponseBody
     @RequestMapping(value = "insertCustomer")
-    public Boolean insertCustomer(HttpServletResponse resp, @RequestBody Map<String, Object> par) {
+    public String insertCustomer(HttpServletResponse resp, @RequestBody Map<String, Object> par) {
         resp.setContentType("text/json");
         resp.setCharacterEncoding("utf-8");
 
@@ -40,12 +40,12 @@ public class weChatController {
             weChatService.insertCustomer(paramsMap);
         } catch (Exception e) {
             e.printStackTrace();
-            return false;
+            return "server had been error";
         }
-        return true;
+        return "server had been success";
     }
 
-//    查询商家外卖
+//    查询商家页
     @ResponseBody
     @RequestMapping(value = "findMenu")
     public List<Map<String,Object>> findMenu(HttpServletResponse resp) {
@@ -60,24 +60,31 @@ public class weChatController {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return  map;
+        return map;
     }
 
     //    添加订单信息
     @ResponseBody
     @RequestMapping(value = "insertOrder")
-    public Boolean insertOrder(HttpServletResponse resp, @RequestBody Map<String, Object> par) {
+    public String insertOrder(HttpServletResponse resp, @RequestBody Map<String, Object> par) {
         resp.setContentType("text/json");
         resp.setCharacterEncoding("utf-8");
+
+
 
         String userName = (String) par.get("userName");
         String userSex = (String) par.get("userSex");
         String userRoom = (String) par.get("userRoom");
         String userPhone = (String) par.get("userPhone");
-        String orderTime = nowTime();
         String orderMenu = (String) par.get("orderMenu");
         String remark = (String) par.get("remark");
         String orderMerchant = (String) par.get("orderMerchant");
+        String orderMoney = (String) par.get("orderMoney");
+        String orderTime = nowTime();
+
+        if(remark.equals("") || remark.equals("无")){
+            remark = "无备注";
+        }
 
         Map<String, Object> paramsMap = new HashMap<>();
         paramsMap.put("userName", userName);
@@ -88,14 +95,15 @@ public class weChatController {
         paramsMap.put("orderMenu", orderMenu);
         paramsMap.put("remark", remark);
         paramsMap.put("orderMerchant", orderMerchant);
+        paramsMap.put("orderMoney", orderMoney);
 
         try {
             weChatService.insertOrder(paramsMap);
         } catch (Exception e) {
             e.printStackTrace();
-            return false;
+            return "server had been error";
         }
-        return true;
+        return "server had been success";
     }
 
     //    查询商家详情页
@@ -135,7 +143,6 @@ public class weChatController {
         return map;
     }
 
-
 //    获取当前时间
     String nowTime(){
         //设置日期格式
@@ -143,5 +150,6 @@ public class weChatController {
         // new Date()为获取当前系统时间
         return df.format(new Date());
     }
+
 
 }
