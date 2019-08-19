@@ -7,10 +7,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Controller
 @RequestMapping("/weChat")
@@ -168,6 +165,8 @@ public class weChatController {
         // new Date()为获取当前系统时间
         return df.format(new Date());
     }
+
+
 
 
 }

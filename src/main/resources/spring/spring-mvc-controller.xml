@@ -80,9 +80,10 @@
     <!--图片上传-->
     <bean id="multipartResolver"
           class="org.springframework.web.multipart.commons.CommonsMultipartResolver"> <!--允许上传文件大小 -->
-        <property name="maxUploadSize" value="104857600000" />
-        <!--缓存大小 -->
-        <property name="maxInMemorySize" value="4096" />
-        <property name="defaultEncoding" value="UTF-8"></property>
+        <property name="defaultEncoding" value="UTF-8"/>
+        <!--最大内存大小-->
+        <property name="maxInMemorySize" value="10240" />
+        <!--最大文件大小，-1为不限制大小-->
+        <property name="maxUploadSize" value="-1" />
     </bean>
 </beans>
