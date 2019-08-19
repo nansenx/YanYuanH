@@ -1001,8 +1001,9 @@ user_phone</ColNames>
       <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="243" parent="208" name="time">
+    <column id="243" parent="208" name="uploadTime">
       <Position>5</Position>
+      <Comment>上传时间</Comment>
       <DataType>datetime|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
