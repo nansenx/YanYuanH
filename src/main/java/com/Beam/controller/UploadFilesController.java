@@ -24,7 +24,7 @@ public class UploadFilesController {
     public String uploadImages(uploadImages images, HttpServletRequest request, Model model) throws Exception{
 
         String sqlPath;
-        String localPath = "C:\\YanYuanOrderImages\\uploadFiles";
+        String localPath = "C:\\YanYuanOrderImages\\uploadFiles\\";
 
         String imageName = request.getParameter("imgName");
         String imageRemark = request.getParameter("imgRemark");
@@ -53,7 +53,7 @@ public class UploadFilesController {
             images.getFile().transferTo(new File(localPath + imageName));
         }
 //        把图片的相对路径保存到数据库
-        sqlPath = "/images/"+imageName;
+        sqlPath = "/images/uploadFiles"+imageName;
         images.setPath(sqlPath);
         Map<String, Object> paramsMap = new HashMap<>();
         paramsMap.put("imageName", imageName);
