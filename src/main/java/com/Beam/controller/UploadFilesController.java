@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
@@ -53,12 +55,13 @@ public class UploadFilesController {
         }
 //        把图片的相对路径保存到数据库
         String sqlPath = "/images/uploadFiles/"+imageName;
-        String sqlPath2 =  "49.232.44.19/images/uploadFiles/"+imageName;
+        String sqlPath2 =  "49.232.44.19:8080/images/uploadFiles/"+imageName;
         images.setPath(sqlPath);
         Map<String, Object> paramsMap = new HashMap<>();
         paramsMap.put("imageName", imageName);
         paramsMap.put("imagePath", sqlPath2);
         paramsMap.put("imageRemark", imageRemark);
+        paramsMap.put("nowTime", nowTime());
 
         uploadFilesService.insertImages(paramsMap);
 
@@ -70,6 +73,12 @@ public class UploadFilesController {
 
         return "uploadBack";
 
+    }
+    String nowTime(){
+        //设置日期格式
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        // new Date()为获取当前系统时间
+        return df.format(new Date());
     }
 
 }

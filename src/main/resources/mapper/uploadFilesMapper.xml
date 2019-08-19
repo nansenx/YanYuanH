@@ -8,8 +8,8 @@
 
     <!--添加图片信息-->
     <insert id="insertImages" parameterType="java.util.Map">
-        insert into images (name,path,remark)
-        values (#{imageName},#{imagePath},#{imageRemark})
+        insert into images (name,path,remark,nowTime)
+        values (#{imageName},#{imagePath},#{imageRemark},#{time})
     </insert>
 
 </mapper>
