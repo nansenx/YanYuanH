@@ -65,7 +65,7 @@ public class UploadFilesController {
 //        回显
         model.addAttribute("imageName", imageName);
         model.addAttribute("imagePath", sqlPath);
-        model.addAttribute("iamgePath", imageRemark);
+        model.addAttribute("imageRemark", imageRemark);
 
         return "uploadBack";
 
