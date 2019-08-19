@@ -16,6 +16,7 @@
         <h6 style="color: yellowgreen">文件名称：${imageName}</h6>
         <h6 style="color: yellowgreen">文件地址：${sqlPath}</h6>
         <h6 style="color: yellowgreen">文件备注：${imageRemark}</h6>
+        <h6 style="color: #11cdc4">上传时间：${nowTime}</h6>
         <hr>
         <div align="center" style="width: auto; height: auto; max-width: 80%; max-height: 80%;">
             <img src="${imagePath}">

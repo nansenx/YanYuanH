@@ -57,11 +57,12 @@ public class UploadFilesController {
         String sqlPath = "/images/uploadFiles/"+imageName;
         String sqlPath2 =  "49.232.44.19:8080/images/uploadFiles/"+imageName;
         images.setPath(sqlPath);
+        String nowTime = nowTime();
         Map<String, Object> paramsMap = new HashMap<>();
         paramsMap.put("imageName", imageName);
         paramsMap.put("imagePath", sqlPath2);
         paramsMap.put("imageRemark", imageRemark);
-        paramsMap.put("nowTime", nowTime());
+        paramsMap.put("nowTime", nowTime);
 
         uploadFilesService.insertImages(paramsMap);
 
@@ -70,6 +71,7 @@ public class UploadFilesController {
         model.addAttribute("imagePath", sqlPath);
         model.addAttribute("sqlPath", sqlPath2);
         model.addAttribute("imageRemark", imageRemark);
+        model.addAttribute("nowTime", nowTime);
 
         return "uploadBack";
 
