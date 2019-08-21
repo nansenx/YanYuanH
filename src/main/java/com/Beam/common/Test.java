@@ -1,19 +1,22 @@
 package com.Beam.common;
 
 
+import com.Beam.utils.DateUtils;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 public class Test {
     public static void main(String[] args) {
+        System.out.println(DateUtils.getSystemDate());
 
     }
     /**
      为数据库图片加上
      “http://192.168.199.161:8080/images/BuDaiMo/region_1/”字段
      的方法
-     **/
+
     List<String> pulsLink(Map<String, Object> map, String ziDuan){
         String string = (String) map.get(ziDuan);
         String [] strings = string.split("，");
@@ -24,5 +27,7 @@ public class Test {
             list.add(string);
         }
         return list;
+
     }
+     **/
 }
