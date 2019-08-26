@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.OutputStream;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -32,7 +34,19 @@ public class loginController {
         rep.reset();
         com.Beam.controller.ValidateCode vCode = new ValidateCode(120, 50, 4, 150);
         try {
-//            看一下QMS的数据库再写。先去吃饭
+//            把验证码保存到数据库
+            Map<String, Object> map = new HashMap<>();
+            map.put("code", vCode.getCode());
+            map.put("create_time", DateUtils.getSystemDate());
+            map.put("after_time", DateUtils.addSeconds(new Date(), 60 * 5));
+            loginService.saveRandomCode(map);
+
+//            绘画图形验证码
+            OutputStream out = rep.getOutputStream();
+            out.write(vCode.getBuffImg());
+            out.flush();
+            out.close();
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -47,7 +61,6 @@ public class loginController {
         String code = (String) pam.get("code");
 
 //        判断验证码
-
         if (code == null || "".equals(code)) {
             return ServerResponse.error(201, "验证码错误");
         }
