@@ -35,8 +35,8 @@
     <!--登陆的拦截器-->
     <!--<mvc:interceptors>
         <mvc:interceptor>
-            &lt;!&ndash; 拦截 user 下的所有请求 &ndash;&gt;
-            <mvc:mapping path="/user/**" />
+            &lt;!&ndash; 拦截 User 下的所有请求 &ndash;&gt;
+            <mvc:mapping path="/User/**" />
             &lt;!&ndash;	&lt;!&ndash;&lt;!&ndash; 自定义拦截器类 &ndash;&gt;&ndash;&gt;&ndash;&gt;
             <bean class="com.fh.interceptor.LoginInterceptor">
             </bean>

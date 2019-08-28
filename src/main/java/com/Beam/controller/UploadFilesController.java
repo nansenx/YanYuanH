@@ -1,6 +1,7 @@
 package com.Beam.controller;
 
 import com.Beam.po.uploadImages;
+import com.Beam.utils.DateUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -57,7 +58,7 @@ public class UploadFilesController {
         String sqlPath = "/images/uploadFiles/"+imageName;
         String sqlPath2 =  "49.232.44.19:8080/images/uploadFiles/"+imageName;
         images.setPath(sqlPath);
-        String nowTime = nowTime();
+        String nowTime = DateUtils.getSystemDate();
         Map<String, Object> paramsMap = new HashMap<>();
         paramsMap.put("imageName", imageName);
         paramsMap.put("imagePath", sqlPath2);
@@ -75,12 +76,6 @@ public class UploadFilesController {
 
         return "uploadBack";
 
-    }
-    String nowTime(){
-        //设置日期格式
-        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        // new Date()为获取当前系统时间
-        return df.format(new Date());
     }
 
 }

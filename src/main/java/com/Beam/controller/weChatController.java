@@ -1,10 +1,13 @@
 package com.Beam.controller;
 
+import com.Beam.utils.DateUtils;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -77,7 +80,7 @@ public class weChatController {
         String remark = (String) par.get("remark");
         String orderMerchant = (String) par.get("orderMerchant");
         String orderMoney = (String) par.get("orderMoney");
-        String orderTime = nowTime();
+        String orderTime = DateUtils.getSystemDate();
 
         if(remark.equals("") || remark.equals("无")){
             remark = "无备注";
@@ -158,15 +161,21 @@ public class weChatController {
         return map;
     }
 
-//    获取当前时间
-    String nowTime(){
-        //设置日期格式
-        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        // new Date()为获取当前系统时间
-        return df.format(new Date());
+
+    @RequestMapping("/findAdmin")
+    public String findAdmin(HttpServletResponse response, HttpServletRequest request, Model model) {
+        String userName = request.getParameter("username");
+        String password = request.getParameter("password");
+
+        String myUserName = "admin";
+        String myPassword = "#include1514";
+
+        if (userName.equals(myUserName) && password.equals(myPassword)) {
+            return "index";
+        }else{
+            request.setAttribute("message", "账号密码错误，请重新登录<br>");
+        }
+        return "fail";
     }
-
-
-
 
 }

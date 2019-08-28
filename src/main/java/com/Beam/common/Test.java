@@ -2,16 +2,19 @@ package com.Beam.common;
 
 
 import com.Beam.utils.DateUtils;
+import com.mysql.jdbc.TimeUtil;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class Test {
     public static void main(String[] args) {
-        System.out.println(DateUtils.getSystemDate());
-
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        System.out.println("工具时间："+DateUtils.getSystemDate());
+        System.out.println();
+        System.out.println("方法时间："+df.format(new Date()));
     }
+
     /**
      为数据库图片加上
      “http://192.168.199.161:8080/images/BuDaiMo/region_1/”字段
@@ -30,4 +33,10 @@ public class Test {
 
     }
      **/
+    String nowTime(){
+        //设置日期格式
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        // new Date()为获取当前系统时间
+        return df.format(new Date());
+    }
 }
