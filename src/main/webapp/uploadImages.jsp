@@ -25,7 +25,7 @@
 <body>
     <table>
         <h2 style="color: red">上传图片：</h2><br>
-        <form action = "/file/uploadImages.order" method="post" enctype="multipart/form-data">
+        <form action = "http://49.232.44.19:8080/file/uploadImages.order" method="post" enctype="multipart/form-data">
 
 
             <label>请输入要存入的图片名称：</label><input type="text" name="imgName"><br>

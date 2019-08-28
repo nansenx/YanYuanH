@@ -13,7 +13,7 @@
 <br>
 <br>
 <div align="center">
-    <img src="images/PublicityImages/publicity1.png">
+    <img src="http://49.232.44.19:8080/images/PublicityImages/publicity1.png">
 </div>
 <br>
 <br>
