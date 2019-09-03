@@ -5,4 +5,4 @@
 ##开发人员：
 Beam：Beamm0613@163.com
 
-![YanYuanOrder](\src\main\webapp\images\Publicity\publicity.png)
+![YanYuanOrder](http://49.232.44.19:8080/images/PublicityImages/publicity1.png)
