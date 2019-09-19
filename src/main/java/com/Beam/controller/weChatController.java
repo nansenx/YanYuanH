@@ -1,16 +1,19 @@
 package com.Beam.controller;
 
+import com.Beam.utils.DatePrimaryKey;
 import com.Beam.utils.DateUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/weChat")
@@ -35,6 +38,7 @@ public class weChatController {
         paramsMap.put("userSex", userSex);
         paramsMap.put("userRoom", userRoom);
         paramsMap.put("userPhone", userPhone);
+        paramsMap.put("addTime", DateUtils.getSystemDate());
 
         try {
             weChatService.insertCustomer(paramsMap);
@@ -69,33 +73,34 @@ public class weChatController {
     public String insertOrder(HttpServletResponse resp, @RequestBody Map<String, Object> par) {
         resp.setContentType("text/json");
         resp.setCharacterEncoding("utf-8");
-
-
-
-        String userName = (String) par.get("userName");
-        String userSex = (String) par.get("userSex");
-        String userRoom = (String) par.get("userRoom");
-        String userPhone = (String) par.get("userPhone");
-        String orderMenu = (String) par.get("orderMenu");
+        
+        String merchant = (String) par.get("merchant");
+        String foodName = (String) par.get("foodName");
+        String foodNum = (String) par.get("foodNum");
+        String foodPrice = (String) par.get("foodPrice");
+        String totalNum = (String) par.get("totalNum");
+        String totalPrice = (String) par.get("totalPrice");
+        String cusPhone = (String) par.get("cusPhone");
         String remark = (String) par.get("remark");
-        String orderMerchant = (String) par.get("orderMerchant");
-        String orderMoney = (String) par.get("orderMoney");
         String orderTime = DateUtils.getSystemDate();
 
         if(remark.equals("") || remark.equals("无")){
             remark = "无备注";
         }
-
+    
+        String idKey = DatePrimaryKey.getDatePrimaryKey();
+        
         Map<String, Object> paramsMap = new HashMap<>();
-        paramsMap.put("userName", userName);
-        paramsMap.put("userSex", userSex);
-        paramsMap.put("userRoom", userRoom);
-        paramsMap.put("userPhone", userPhone);
-        paramsMap.put("orderTime", orderTime);
-        paramsMap.put("orderMenu", orderMenu);
+        paramsMap.put("idKey", idKey);
+        paramsMap.put("merchant", merchant);
+        paramsMap.put("foodName", foodName);
+        paramsMap.put("foodNum", foodNum);
+        paramsMap.put("foodPrice", foodPrice);
+        paramsMap.put("totalNum", totalNum);
+        paramsMap.put("totalPrice", totalPrice);
+        paramsMap.put("cusPhone", cusPhone);
         paramsMap.put("remark", remark);
-        paramsMap.put("orderMerchant", orderMerchant);
-        paramsMap.put("orderMoney", orderMoney);
+        paramsMap.put("orderTime", orderTime);
 
         try {
             weChatService.insertOrder(paramsMap);
@@ -103,7 +108,7 @@ public class weChatController {
             e.printStackTrace();
             return "server had been error";
         }
-        return "server had been success";
+        return "idKey:"+idKey;
     }
 
     //    查询商家详情页
@@ -115,6 +120,7 @@ public class weChatController {
 
         String merchantId = (String) par.get("merchant_id");
         String dataBase = null;
+        
 
         switch (merchantId) {
             case "1111":

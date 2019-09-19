@@ -8,8 +8,8 @@
 
     <!--添加用户信息-->
     <insert id="insertCustomer" parameterType="java.util.Map">
-        insert into customerInfomation (user_name,user_dormitory,user_phone,user_sex)
-        values (#{userName},#{userRoom},#{userPhone},#{userSex})
+        insert into customerInfo (nume,dormitory,phone,sex,add_time)
+        values (#{userName},#{userRoom},#{userPhone},#{userSex},#{addTime})
     </insert>
 
     <!--查询商家-->
@@ -27,10 +27,10 @@
 
     <!--添加订单信息-->
     <insert id="insertOrder" parameterType="java.util.Map">
-        insert into orderinformation (order_time,order_menu,cus_name,cus_phone,cus_dormitory,
-        cus_sex,remark,order_merchant,order_money)
-        values (#{orderTime},#{orderMenu},#{userName},#{userPhone},#{userRoom},
-        #{userSex},#{remark},#{orderMerchant},#{orderMoney})
+        insert into orderInfo (idKey,merchant,food_name,food_num,food_price,
+        total_num,total_price,order_time,cus_phone,remark)
+        values (#{idKey},#{merchant},#{foodName},#{foodNum},#{foodPrice},#{totalNum},
+        #{totalPrice},#{orderTime},#{cusPhone},#{remark})
     </insert>
 
     <!--查询商家-->

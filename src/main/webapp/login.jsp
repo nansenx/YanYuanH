@@ -30,7 +30,6 @@
         $('#remember')[0].checked = true;
         $(':text[name="username"]').val($.trim(u));
     }
-    });
     function formcheck() {
         if($('#remember:checked').length == 1) {
             cookie.set('remember-username', $(':text[name="username"]').val());
@@ -62,11 +61,6 @@
                 <td></td>
                 <td><input type="submit"
                            name="submit" class="btn span2" value="登录"/><input type="hidden" name="token" value="33b4efe4" /></td>
-                <%
-                    if (request.getAttribute("message") != null) {
-                        out.print(request.getAttribute("message"));
-                    }
-                %>
             </tr>
         </table>
     </div>
