@@ -8,8 +8,9 @@
 
     <!--添加图片信息-->
     <insert id="insertImages" parameterType="java.util.Map">
-        insert into images (image_name,image_path,remark,upload_time)
-        values (#{imageName},#{imagePath},#{imageRemark},#{nowTime})
+        insert into ${dataBase} (menu_class,food_name,food_image,food_price,add_time)
+        values (#{menuClass},#{foodName},#{imagePath},#{foodPrice},#{nowTime})
     </insert>
+
 
 </mapper>

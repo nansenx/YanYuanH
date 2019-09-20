@@ -14,12 +14,10 @@ public class uploadFilesImpl implements uploadFilesService {
     @Autowired
     private uploadFilesMapper uploadFilesMapper;
 
-//    添加用户信息
     @Override
-    public Boolean insertImages(Map<String, Object> ParamsMap) {
-
-        return uploadFilesMapper.insertImages(ParamsMap);
+    //    添加图片信息
+    public void insertImages(Map<String, Object> ParamsMap) {
+        uploadFilesMapper.insertImages(ParamsMap);
     }
-
-
+    
 }

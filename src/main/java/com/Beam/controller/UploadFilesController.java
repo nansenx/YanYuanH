@@ -9,11 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 
 @Controller
 @RequestMapping("/file")
@@ -29,8 +25,11 @@ public class UploadFilesController {
         String localPath = "C:\\YanYuanOrderImages\\uploadFiles\\";
 
         String imageName = request.getParameter("imgName");
-        String imageRemark = request.getParameter("imgRemark");
-
+        String foodPrice = request.getParameter("foodPrice");
+        String foodName = request.getParameter("foodName");
+        String menuClass = request.getParameter("menuClass");
+        String dataBase = request.getParameter("dataBase");
+        
         if (imageName.isEmpty()) {
 
 //            生成uuid作为文件名称
@@ -54,6 +53,7 @@ public class UploadFilesController {
 //            文件保存路径
             images.getFile().transferTo(new File(localPath + imageName));
         }
+        
 //        把图片的相对路径保存到数据库
         String sqlPath = "/images/uploadFiles/"+imageName;
         String sqlPath2 =  "49.232.44.19:8080/images/uploadFiles/"+imageName;
@@ -62,16 +62,27 @@ public class UploadFilesController {
         Map<String, Object> paramsMap = new HashMap<>();
         paramsMap.put("imageName", imageName);
         paramsMap.put("imagePath", sqlPath2);
-        paramsMap.put("imageRemark", imageRemark);
         paramsMap.put("nowTime", nowTime);
-
-        uploadFilesService.insertImages(paramsMap);
-
+        paramsMap.put("dataBase", dataBase);
+        paramsMap.put("foodPrice", foodPrice);
+        paramsMap.put("menuClass", menuClass);
+        paramsMap.put("foodName", foodName);
+    
+        try {
+            uploadFilesService.insertImages(paramsMap);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "uploadFail";
+        }
+        
 //        回显
         model.addAttribute("imageName", imageName);
+        model.addAttribute("foodName", foodName);
+        model.addAttribute("dataBase", dataBase);
+        model.addAttribute("menuClass", menuClass);
+        model.addAttribute("foodPrice", foodPrice);
         model.addAttribute("imagePath", sqlPath);
         model.addAttribute("sqlPath", sqlPath2);
-        model.addAttribute("imageRemark", imageRemark);
         model.addAttribute("nowTime", nowTime);
 
         return "uploadBack";
