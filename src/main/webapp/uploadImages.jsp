@@ -25,7 +25,7 @@
 <body style="padding: 30px;">
 <table>
     <h2 style="color: red">添加菜品：</h2><br>
-    <form action="http://localhost:8080/file/uploadImages.order" method="post" enctype="multipart/form-data">
+    <form action="http://49.232.44.19:8080/file/uploadImages.order" method="post" enctype="multipart/form-data">
 
 
         <label>请选择要上传菜品的商家: </label>
