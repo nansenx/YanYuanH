@@ -73,42 +73,60 @@ public class weChatController {
     public String insertOrder(HttpServletResponse resp, @RequestBody Map<String, Object> par) {
         resp.setContentType("text/json");
         resp.setCharacterEncoding("utf-8");
-        
-        String merchant = (String) par.get("merchant");
-        String foodName = (String) par.get("foodName");
-        String foodNum = (String) par.get("foodNum");
-        String foodPrice = (String) par.get("foodPrice");
-        String totalNum = (String) par.get("totalNum");
-        String totalPrice = (String) par.get("totalPrice");
-        String cusPhone = (String) par.get("cusPhone");
+    
+        Integer totalNum = (Integer) par.get("totalNum");
+        Integer totalPrice = (Integer) par.get("totalPrice");
+        String cusPhone = (String) par.get("userPhone");
         String remark = (String) par.get("remark");
         String orderTime = DateUtils.getSystemDate();
-
+        String idKey = DatePrimaryKey.getDatePrimaryKey();
+    
         if(remark.equals("") || remark.equals("无")){
             remark = "无备注";
         }
-    
-        String idKey = DatePrimaryKey.getDatePrimaryKey();
         
+        List order = (List) par.get("order");
         Map<String, Object> paramsMap = new HashMap<>();
-        paramsMap.put("idKey", idKey);
-        paramsMap.put("merchant", merchant);
-        paramsMap.put("foodName", foodName);
-        paramsMap.put("foodNum", foodNum);
-        paramsMap.put("foodPrice", foodPrice);
-        paramsMap.put("totalNum", totalNum);
-        paramsMap.put("totalPrice", totalPrice);
-        paramsMap.put("cusPhone", cusPhone);
-        paramsMap.put("remark", remark);
-        paramsMap.put("orderTime", orderTime);
-
-        try {
-            weChatService.insertOrder(paramsMap);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return "server had been error";
+        for (int i = 0; i < order.size(); i++) {
+            Map<String, Object> mapp = (Map<String, Object>) order.get(i);
+                if (i == 0) {
+                    try {
+                        paramsMap.put("merchant", mapp.get("merchants"));
+                        paramsMap.put("foodName", mapp.get("name"));
+                        paramsMap.put("foodNum", mapp.get("num"));
+                        paramsMap.put("foodPrice", mapp.get("price"));
+                        paramsMap.put("idKey", idKey);
+                        paramsMap.put("totalNum", totalNum);
+                        paramsMap.put("totalPrice", totalPrice);
+                        paramsMap.put("cusPhone", cusPhone);
+                        paramsMap.put("remark", remark);
+                        paramsMap.put("orderTime", orderTime);
+                        weChatService.insertOrder(paramsMap);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                        return "server have been error";
+                    }
+                    
+                }else{
+                    try {
+                        paramsMap.put("merchant", mapp.get("merchants"));
+                        paramsMap.put("foodName", mapp.get("name"));
+                        paramsMap.put("foodNum", mapp.get("num"));
+                        paramsMap.put("foodPrice", mapp.get("price"));
+                        paramsMap.put("idKey", idKey);
+                        paramsMap.put("totalNum", totalNum);
+                        paramsMap.put("totalPrice", totalPrice);
+                        paramsMap.put("cusPhone", cusPhone);
+                        paramsMap.put("remark", remark);
+                        paramsMap.put("orderTime", orderTime);
+                        weChatService.insertOrder(paramsMap);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                        return "server have been error";
+                    }
+                }
         }
-        return "idKey:"+idKey;
+        return idKey;
     }
 
     //    查询商家详情页
