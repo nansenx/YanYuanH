@@ -19,4 +19,7 @@ public interface weChatMapper {
 
 //    查询滚动页
     List<Map<String,Object>> findScrollBar();
+
+//   通过keyId查询订单信息
+    List<Map<String,Object>> findOrderByKeyId(String keyId);
 }

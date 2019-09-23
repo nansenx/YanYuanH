@@ -184,8 +184,8 @@ public class weChatController {
         }
         return map;
     }
-
-
+    
+//    安全登录
     @RequestMapping("/findAdmin")
     public String findAdmin(HttpServletResponse response, HttpServletRequest request, Model model) {
         String userName = request.getParameter("username");
@@ -201,5 +201,23 @@ public class weChatController {
         }
         return "fail";
     }
+
+//  通过keyId查询订单信息
+
+    @ResponseBody
+    @RequestMapping("/findOrderByKeyId")
+    public List<Map<String,Object>> findOrderByKeyId(@RequestBody Map<String, Object> par) {
+        
+        String keyId = (String) par.get("keyId");
+        List<Map<String,Object>> map = null;
+    
+        try {
+            map = weChatService.findOrderByKeyId(keyId);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return map;
+    }
+    
 
 }

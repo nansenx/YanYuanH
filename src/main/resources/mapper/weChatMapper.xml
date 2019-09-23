@@ -8,8 +8,10 @@
 
     <!--添加用户信息-->
     <insert id="insertCustomer" parameterType="java.util.Map">
-        insert into customerInfo (nume,dormitory,phone,sex,add_time)
-        values (#{userName},#{userRoom},#{userPhone},#{userSex},#{addTime})
+        insert into
+          customerInfo (nume,dormitory,phone,sex,add_time)
+        values
+          (#{userName},#{userRoom},#{userPhone},#{userSex},#{addTime})
     </insert>
 
     <!--查询商家-->
@@ -20,23 +22,52 @@
 
     <!--查询商家详细页-->
     <select id="findMerchant" resultType="java.util.Map" parameterType="java.util.Map">
-        select *
-        from ${dataBase},merchant
-        where merchant.merchant_id = ${merchantId}
+        select
+          *
+        from
+          ${dataBase},merchant
+        where
+          merchant.merchant_id = ${merchantId}
     </select>
 
     <!--添加订单信息-->
     <insert id="insertOrder" parameterType="java.util.Map">
-        insert into orderInfo (idKey,merchant,food_name,food_num,food_price,
-        total_num,total_price,order_time,cus_phone,remark)
-        values (#{idKey},#{merchant},#{foodName},#{foodNum},#{foodPrice},#{totalNum},
-        #{totalPrice},#{orderTime},#{cusPhone},#{remark})
+        insert into
+          orderInfo (idKey,merchant,food_name,food_num,food_price,
+                     total_num,total_price,order_time,cus_phone,remark)
+        values
+            (#{idKey},#{merchant},#{foodName},#{foodNum},#{foodPrice},#{totalNum},
+              #{totalPrice},#{orderTime},#{cusPhone},#{remark})
     </insert>
 
-    <!--查询商家-->
+    <!--查询宣传滚动栏-->
     <select id="findScrollBar" resultType="java.util.Map">
-        select *
-        from scollbar
+        select
+          *
+        from
+          scollbar
+    </select>
+
+    <!--通过keyId查询订单信息-->
+    <select id="findOrderByKeyId" parameterType="java.lang.String" resultType="java.util.Map">
+    SELECT
+        customerinfo.nume AS '客户姓名',
+        customerinfo.dormitory AS '客户宿舍',
+        customerinfo.phone AS '客户电话',
+        customerinfo.sex AS '客户性别' ,
+        orderinfo.merchant as '订单商家',
+        orderinfo.food_name as '餐品名称',
+        orderinfo.food_num as '餐品数量',
+        orderinfo.total_num as '餐品总数',
+        orderinfo.total_price as '总价格',
+        orderinfo.remark as '备注',
+        orderinfo.order_time as '订单价格'
+    FROM
+        customerinfo,
+        orderinfo
+    WHERE
+        customerinfo.phone = orderinfo.cus_phone
+        AND orderinfo.idKey = #{keyId}
     </select>
 
 </mapper>

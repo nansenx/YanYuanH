@@ -41,10 +41,18 @@ public class weChatListImpl implements weChatService {
         List<Map<String,Object>> maps = wechatMapper.findMerchant(ParamsMap);
         return maps;
     }
-
+    
+//  查询宣传滚动页
     @Override
     public List<Map<String, Object>> findScrollBar() {
         return wechatMapper.findScrollBar();
     }
+    
+//  通过keyId查询订单信息
+    @Override
+    public List<Map<String, Object>> findOrderByKeyId(String keyId) {
+        return wechatMapper.findOrderByKeyId(keyId);
+    }
 
+    
 }
