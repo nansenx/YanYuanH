@@ -38,8 +38,25 @@ public class weChatListImpl implements weChatService {
 //    查询商家详情页
     @Override
     public List<Map<String,Object>> findMerchant(Map<String, Object> ParamsMap) {
-        List<Map<String,Object>> maps = wechatMapper.findMerchant(ParamsMap);
-        return maps;
+        List<Map<String,Object>> listMap = wechatMapper.findMerchant(ParamsMap);
+//        添加判断menuId方便前端分类
+        int menuId = 0;
+        
+        listMap.get(0).put("menu_id", menuId);
+        
+        for (int i = 0; i < listMap.size(); i++) {
+            
+            if (i < listMap.size() - 1) {
+                
+                if (listMap.get(i).get("menu_class").equals(listMap.get(i + 1).get("menu_class"))) {
+            
+                } else {
+                    menuId++;
+                }
+                listMap.get(i + 1).put("menu_id", menuId);
+            }
+        }
+        return listMap;
     }
     
 //  查询宣传滚动页

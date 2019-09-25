@@ -28,6 +28,7 @@
           ${dataBase},merchant
         where
           merchant.merchant_id = ${merchantId}
+        order by ${dataBase}.menu_class
     </select>
 
     <!--添加订单信息-->
