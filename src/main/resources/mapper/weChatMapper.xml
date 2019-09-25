@@ -27,7 +27,7 @@
         from
           ${dataBase},merchant
         where
-          merchant.merchant_id = ${merchantId}
+          merchant.merchant_name = #{merchantName}
         order by ${dataBase}.menu_class
     </select>
 

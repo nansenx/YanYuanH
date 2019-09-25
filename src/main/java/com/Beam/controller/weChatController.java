@@ -2,6 +2,7 @@ package com.Beam.controller;
 
 import com.Beam.utils.DatePrimaryKey;
 import com.Beam.utils.DateUtils;
+import com.Beam.utils.PingYinUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -136,26 +137,11 @@ public class weChatController {
         resp.setContentType("text/json");
         resp.setCharacterEncoding("utf-8");
 
-        String merchantId = (String) par.get("merchant_id");
-        String dataBase = null;
+        String merchantName = (String) par.get("merchant_name");
+        String dataBase = PingYinUtils.getPingYin(merchantName);
         
-
-        switch (merchantId) {
-            case "1111":
-                dataBase = "budaimo";
-                break;
-            case "1112":
-                dataBase = "dapanji";
-                break;
-                case "1113":
-                dataBase = "gaijiaofan";
-                break;
-            default:
-                System.out.println("===================请检查merchantId有没有输入正确=================");
-        }
-
         Map<String, Object> paramsMap = new HashMap<>();
-        paramsMap.put("merchantId", merchantId);
+        paramsMap.put("merchantName", merchantName);
         paramsMap.put("dataBase",dataBase);
         List<Map<String, Object>> map = null;
 
