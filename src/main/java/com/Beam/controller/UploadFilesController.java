@@ -16,8 +16,7 @@ import java.util.*;
 public class UploadFilesController {
     @Resource
     com.Beam.biz.uploadFilesService uploadFilesService;
-
-
+    
     //    图片上传
     @RequestMapping("/uploadImages")
     public String uploadImages(uploadImages images, HttpServletRequest request, Model model) throws Exception{
@@ -56,7 +55,7 @@ public class UploadFilesController {
         
 //        把图片的相对路径保存到数据库
         String sqlPath = "/images/uploadFiles/"+imageName;
-        String sqlPath2 =  "49.232.44.19:8080/images/uploadFiles/"+imageName;
+        String sqlPath2 =  "http://49.232.44.19:8080/images/uploadFiles/"+imageName;
         images.setPath(sqlPath);
         String nowTime = DateUtils.getSystemDate();
         Map<String, Object> paramsMap = new HashMap<>();

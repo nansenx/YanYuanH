@@ -1,22 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-    <title>UpLoadImages</title>
-</head>
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <meta charset="utf-8">
-    <title>UploadImages</title>
-</head>
-
-<body>
-<!DOCTYPE html>
-<html>
-<head>
-
-</head>
-<head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta charset="utf-8">
     <title>UploadImages</title>
@@ -30,7 +14,7 @@
 
         <label>请选择要上传菜品的商家: </label>
         <select name="dataBase">
-            <option value="publicity">宣传相册</option>
+            <%--<option value="publicity">宣传相册</option>--%>
             <option value="budaimo">大嘴布袋馍</option>
             <option value="dapanji">大盘鸡</option>
             <option value="gaijiaofan">特色盖浇饭</option>
@@ -65,10 +49,8 @@
         <label>  元</label>
         <br>
         <br>
-        </option>
         <input type="file" name="file" size="38">
-        <input type="submit"  value="提交" size="50">
-
+        <input type="submit" value="提交" size="50">
     </form>
 </table>
 </body>

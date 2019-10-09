@@ -174,18 +174,25 @@ public class weChatController {
 //    安全登录
     @RequestMapping("/findAdmin")
     public String findAdmin(HttpServletResponse response, HttpServletRequest request, Model model) {
-        String userName = request.getParameter("username");
-        String password = request.getParameter("password");
-
+        String userName;
+        String password;
         String myUserName = "admin";
         String myPassword = "#include1514";
-
-        if (userName.equals(myUserName) && password.equals(myPassword)) {
-            return "index";
-        }else{
-            request.setAttribute("message", "账号密码错误，请重新登录<br>");
+        
+        try {
+            userName = request.getParameter("username");
+            password = request.getParameter("password");
+            if (userName.equals(myUserName) && password.equals(myPassword)) {
+                return "index";
+            }else{
+                request.setAttribute("message", "账号密码错误，请重新登录<br>");
+                return "fail";
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "500";
         }
-        return "fail";
+       
     }
 
 //  通过keyId查询订单信息
